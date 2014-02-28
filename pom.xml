@@ -6,8 +6,7 @@
 	<artifactId>FirstPortlet</artifactId>
 	<packaging>war</packaging>
 	<name>FirstPortlet Portlet</name>
-	<version>1.0.0-SNAPSHOT</version>
-	
+	<version>1.0.0-SNAPSHOT</version>	
 	<properties>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 	</properties>
@@ -99,7 +98,7 @@
 		<dependency>
 		  <groupId>org.springframework</groupId>
 		  <artifactId>spring-webmvc-portlet</artifactId>
-		  <version>3.2.7.RELEASE</version>
+		  <version>3.2.8.RELEASE</version>
 		  <scope>compile</scope>
 		  <exclusions>
 		    <exclusion>

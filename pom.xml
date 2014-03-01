@@ -8,51 +8,144 @@
 	<name>FirstPortlet Portlet</name>
 	<version>1.0.0-SNAPSHOT</version>	
 	<properties>
+		<org.springframework-version>3.2.8.RELEASE</org.springframework-version>
 		<org.slf4j-version>1.7.5</org.slf4j-version>
+		<org.hibernate-version>4.3.1.Final</org.hibernate-version>
 	</properties>
-	
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>com.liferay.maven.plugins</groupId>
-				<artifactId>liferay-maven-plugin</artifactId>
-				<version>${liferay.maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>build-css</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
-					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
-					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
-					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
-					<liferayVersion>${liferay.version}</liferayVersion>
-					<pluginType>portlet</pluginType>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+
 	<dependencies>
+	
+    	<!-- Spring -->
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-webmvc-portlet</artifactId>
+		  <version>${org.springframework-version}</version>
+		  <scope>compile</scope>
+		  <exclusions>
+		    <exclusion>
+		      <groupId>javax.servlet</groupId>
+		      <artifactId>servlet-api</artifactId>
+		    </exclusion>
+		    <exclusion>
+		      <groupId>commons-logging</groupId>
+		      <artifactId>commons-logging</artifactId>
+		    </exclusion>
+		    <exclusion>
+		      <groupId>com.sun.xml.bind</groupId>
+		      <artifactId>jaxb-impl</artifactId>
+		    </exclusion>
+		  </exclusions>
+		</dependency>
+		
+		<!-- Hibernate -->
+<!-- 		<dependency> -->
+<!-- 		  <groupId>org.hibernate</groupId> -->
+<!-- 		  <artifactId>hibernate-validator</artifactId> -->
+<!-- 		  <version>${org.hibernate-version}</version> -->
+<!-- 		  <scope>runtime</scope> -->
+<!-- 		  <exclusions> -->
+<!-- 		    <exclusion> -->
+<!-- 		      <groupId>com.sun.xml.bind</groupId> -->
+<!-- 		      <artifactId>jaxb-impl</artifactId> -->
+<!-- 		    </exclusion> -->
+<!-- 		    <exclusion> -->
+<!-- 		      <groupId>javax.xml.bind</groupId> -->
+<!-- 		      <artifactId>jaxb-api</artifactId> -->
+<!-- 		    </exclusion> -->
+<!-- 		  </exclusions> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-orm</artifactId> -->
+<!-- 			<version>${org.springframework-version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.3.2.GA</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.springframework</groupId>
+		  <artifactId>spring-orm</artifactId>
+		 <version>${org.springframework-version}</version>
+		 </dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.4.0.GA</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-commons-annotations</artifactId> -->
+<!-- 			<version>3.3.0.ga</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-entitymanager</artifactId> -->
+<!-- 			<version>${org.hibernate-version}</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+		    <groupId>javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.12.1.GA</version>
+		</dependency> 
+		
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc3</version>
+		</dependency>
+		            
+		
+		<!-- New Spring Additions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc-portlet</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+
+<!--         <dependency> -->
+<!--         <groupId>org.springframework.data</groupId> -->
+<!--         <artifactId>spring-data-jpa</artifactId> -->
+<!--         <version>1.5.0.RELEASE</version> -->
+<!--         <exclusions> -->
+<!--             <exclusion> -->
+<!--                 <groupId>org.hibernate.javax.persistence</groupId> -->
+<!--                 <artifactId>hibernate-jpa-2.0-api</artifactId> -->
+<!--             </exclusion> -->
+<!--         </exclusions> -->
+<!--     </dependency> -->
+    
+    
+		<!-- Misc Additions -->        
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
+			<version>1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>persistence-api</artifactId>
+			<version>1.0</version>
+		</dependency>
+<!--         <dependency> -->
+<!-- 		   <groupId>org.javassist</groupId> -->
+<!-- 		   <artifactId>javassist</artifactId> -->
+<!-- 		   <version>3.18.0-GA</version> -->
+<!-- 		</dependency>   -->
+
+		<!-- Liferay -->
 		<dependency>
 			<groupId>com.liferay.portal</groupId>
 			<artifactId>portal-service</artifactId>
@@ -77,6 +170,9 @@
 			<version>${liferay.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		
+		<!-- JAVAX -->	
 		<dependency>
 			<groupId>javax.portlet</groupId>
 			<artifactId>portlet-api</artifactId>
@@ -96,42 +192,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		  <groupId>org.springframework</groupId>
-		  <artifactId>spring-webmvc-portlet</artifactId>
-		  <version>3.2.8.RELEASE</version>
-		  <scope>compile</scope>
-		  <exclusions>
-		    <exclusion>
-		      <groupId>javax.servlet</groupId>
-		      <artifactId>servlet-api</artifactId>
-		    </exclusion>
-		    <exclusion>
-		      <groupId>commons-logging</groupId>
-		      <artifactId>commons-logging</artifactId>
-		    </exclusion>
-		    <exclusion>
-		      <groupId>com.sun.xml.bind</groupId>
-		      <artifactId>jaxb-impl</artifactId>
-		    </exclusion>
-		  </exclusions>
-		</dependency>
-		<dependency>
-		  <groupId>org.hibernate</groupId>
-		  <artifactId>hibernate-validator</artifactId>
-		  <version>4.0.2.GA</version>
-		  <scope>runtime</scope>
-		  <exclusions>
-		    <exclusion>
-		      <groupId>com.sun.xml.bind</groupId>
-		      <artifactId>jaxb-impl</artifactId>
-		    </exclusion>
-		    <exclusion>
-		      <groupId>javax.xml.bind</groupId>
-		      <artifactId>jaxb-api</artifactId>
-		    </exclusion>
-		  </exclusions>
-		</dependency>
-		<dependency>
 		  <groupId>javax.validation</groupId>
 		  <artifactId>validation-api</artifactId>
 		  <version>1.0.0.GA</version>
@@ -141,7 +201,6 @@
 		  <artifactId>jstl</artifactId>
 		  <version>1.2</version>
 		</dependency>
-		
 		
 		<!-- Logging -->
 		<dependency>
@@ -201,6 +260,47 @@
 			<scope>test</scope>
 		</dependency>
 		
-		
 	</dependencies>
+	
+		<build>
+		<plugins>
+			<plugin>
+				<groupId>com.liferay.maven.plugins</groupId>
+				<artifactId>liferay-maven-plugin</artifactId>
+				<version>${liferay.maven.plugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>build-css</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<autoDeployDir>${liferay.auto.deploy.dir}</autoDeployDir>
+					<appServerDeployDir>${liferay.app.server.deploy.dir}</appServerDeployDir>
+					<appServerLibGlobalDir>${liferay.app.server.lib.global.dir}</appServerLibGlobalDir>
+					<appServerPortalDir>${liferay.app.server.portal.dir}</appServerPortalDir>
+					<liferayVersion>${liferay.version}</liferayVersion>
+					<pluginType>portlet</pluginType>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

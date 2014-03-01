@@ -14,6 +14,7 @@
 			<mime-type>text/html</mime-type>
 			<portlet-mode>view</portlet-mode>
 		</supports>
+        <resource-bundle>classpath:resources</resource-bundle>
 		<portlet-info>
 			<title>FirstPortlet</title>
 			<short-title>FirstPortlet</short-title>

@@ -55,18 +55,6 @@
 	</bean>
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>org.postgresql.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:postgresql://localhost:5432/lportal</value>
-		</property>
-		<property name="username">
-			<value>sa</value>
-		</property>
-		<property name="password">
-			<value>sa</value>
-		</property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
